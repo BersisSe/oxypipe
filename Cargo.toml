@@ -3,7 +3,7 @@ name = "oxypipe"
 version = "0.1.0"
 edition = "2024"
 description = "Modern, Efficient, Portable ONNX Pipeline"
-license = "GPLv3"
+license = "GPL-3.0"
 repository = "https://github.com/BersisSe/oxypipe"
 
 [dependencies]
