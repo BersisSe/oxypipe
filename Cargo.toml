@@ -6,4 +6,26 @@ description = "Modern, Efficient, Portable ONNX Pipeline"
 license = "GPL-3.0"
 repository = "https://github.com/BersisSe/oxypipe"
 
+[[bin]]
+path = "src/main.rs"
+name = "oxypipe"
+
+
+[lib]
+path = "src/liboxy/lib.rs"
+
+
+
 [dependencies]
+image = { version = "0.24", default-features = false, features = ["jpeg", "png"] }
+ndarray = "0.15"
+
+# Fearless Concurency MENNN
+tokio = { version = "1", features = ["rt-multi-thread", "sync", "macros"] }
+rayon = "1.10"
+
+clap = { version = "4.4", features = ["derive"] }
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+bytes = "1.12.1"
