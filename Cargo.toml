@@ -3,7 +3,7 @@ name = "oxypipe"
 version = "0.1.0"
 edition = "2024"
 description = "Modern, Efficient, Portable ONNX Pipeline"
-license = "GPL-3.0"
+license = "LGPL-3.0"
 repository = "https://github.com/BersisSe/oxypipe"
 
 [[bin]]
@@ -18,8 +18,8 @@ path = "src/liboxy/lib.rs"
 
 [dependencies]
 image = { version = "0.24", default-features = false, features = ["jpeg", "png"] }
-ndarray = "0.15"
-
+ndarray = "0.17"
+nokhwa = { version = "0.10", features = ["input-native"], optional=true }
 # Fearless Concurency MENNN
 tokio = { version = "1", features = ["rt-multi-thread", "sync", "macros"] }
 rayon = "1.10"
@@ -29,3 +29,9 @@ anyhow = "1.0"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 bytes = "1.12.1"
+ort = "2.0.0-rc.13"
+
+
+[features]
+default = ["camera"]
+camera = ["dep:nokhwa"]
