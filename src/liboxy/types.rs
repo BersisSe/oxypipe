@@ -26,7 +26,7 @@ pub struct Frame {
 }
 
 impl Frame {
-    pub fn buffer_size(&self) -> usize{
+    pub fn buffer_size(&self) -> usize {
         let channels = match self.format {
             PixelFormat::Mono8 => 1,
             PixelFormat::Rgb8 | PixelFormat::Bgr8 => 3,
@@ -35,7 +35,6 @@ impl Frame {
         (self.width * self.height * channels) as usize
     }
 }
-
 
 /// 2D coordinate of a Frame.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -73,7 +72,6 @@ impl BoundingBox {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Embedding {
-    /// Typically 128-D or 512-D float vector
     pub vector: Array1<f32>,
 }
 

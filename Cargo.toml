@@ -1,37 +1,39 @@
 [package]
 name = "oxypipe"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 description = "Modern, Efficient, Portable ONNX Pipeline"
 license = "LGPL-3.0"
 repository = "https://github.com/BersisSe/oxypipe"
 
-[[bin]]
-path = "src/main.rs"
-name = "oxypipe"
-
-
 [lib]
 path = "src/liboxy/lib.rs"
-
-
 
 [dependencies]
 image = { version = "0.24", default-features = false, features = ["jpeg", "png"] }
 ndarray = "0.17"
-nokhwa = { version = "0.10", features = ["input-native"], optional=true }
+nokhwa = { version = "0.10", features = ["input-native"], optional = true }
 # Fearless Concurency MENNN
 tokio = { version = "1", features = ["rt-multi-thread", "sync", "macros"] }
 rayon = "1.10"
-
-clap = { version = "4.4", features = ["derive"] }
+wide = { version = "1.7.0" }
 anyhow = "1.0"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 bytes = "1.12.1"
 ort = "2.0.0-rc.13"
 
-
 [features]
-default = ["camera"]
+default = []
 camera = ["dep:nokhwa"]
+
+
+[lints.clippy]
+perf = { level = "warn", priority = -1 }
+redundant_clone = "warn"
+clone_on_ref_ptr = "warn"
+large_types_passed_by_value = "warn"
+implicit_clone = "warn"
+
+correctness = { level = "deny", priority = -1 }
+undocumented_unsafe_blocks = "warn"
